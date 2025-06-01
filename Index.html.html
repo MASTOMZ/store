@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=no">
+  <title>TomzStore</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; font-family: 'Segoe UI', sans-serif; overflow-x: hidden; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url("bacground.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+    }
+
+    .slide {
+      display: none;
+      height: 100vh;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image: url("bacground.jpg");
+      color: rgb(243, 234, 234);
+      text-align: center;
+      padding: 2em;
+    }
+
+    .slide.active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      animation: fade 0.5s;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 0.4em;
+    }
+
+    p {
+      font-size: 1.3em;
+      margin-bottom: 0.2em;
+    }
+
+    .btn {
+      background: #27ae60;
+      color: rgb(2, 2, 2);
+      padding: 1em 2em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+      margin-top: 2em;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #1e8c4f;
+    }
+
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5em;
+      padding-top: 2em;
+    }
+
+    .product {
+      background: rgba(249, 249, 249, 0.95);
+      border-radius: 10px;
+      width: 260px;
+      padding: 1em;
+      color: rgb(0, 0, 0);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .product img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .price { color: #27ae60; font-weight: bold; }
+
+    .buy-button {
+      margin-top: 1em;
+      padding: 0.6em;
+      width: 100%;
+      background: #27ae60;
+      color: rgb(246, 244, 244);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .buy-button:hover {
+      background: #1f814a;
+    }
+  </style>
+</head>
+<body>
+
+
+<div class="slide active" id="slide1" style="padding: 0;">
+  <div style="background: #040404; padding: 3em 1em 2em; text-align: center;">
+    <h1 style="color: white; font-size: 2.5em;">Toko Online TomzStore</h1>
+    <p style="color: white; font-size: 1.3em;">Selamat Datang di TomzStore!</p>
+    <p style="color: white; font-size: 1.3em;">Layanan Ketik Dokumen!</p>
+
+    
+    <div style="margin-top: 2em;">
+      <label for="nama" style="color: white; font-size: 1.2em;">Masukkan Nama Lengkap:</label><br>
+      <input type="text" id="nama" placeholder="Nama lengkap kamu" style="padding: 0.5em; margin-top: 0.5em; border-radius: 5px; width: 80%; max-width: 300px;">
+    </div>
+  </div>
+  <button class="btn" onclick="goToSlide(2)">Lihat Produk</button>
+</div>
+
+
+<div class="slide" id="slide2">
+  <div>
+    <h1>Produk Kami</h1>
+    <div class="product-grid">
+      <div class="product">
+        <img src="laporan.jpg" alt="Laporan">
+        <h3>Laporan</h3>
+        <p>Pengetikan laporan rapi dan sesuai format kampus.</p>
+        <p class="price">Rp3.000 / halaman</p>
+        <div style="margin-bottom: 1em;">
+          <label for="metode" style="font-weight: bold;">Pilih Metode Pembayaran:</label><br>
+          <select id="metode" style="padding: 0.5em; margin-top: 0.3em; border-radius: 5px; width: 100%;">
+            <option value="Cash">Cash</option>
+            <option value="Pulsa">Pulsa</option>
+          </select>
+        </div>
+        <button class="buy-button" onclick="pesan('laporan')">Pesan</button>
+      </div>
+      <div class="product">
+        <img src="makalah.jpg" alt="Makalah">
+        <h3>Makalah</h3>
+        <p>Makalah kampus dan sekolah cepat dan rapi.</p>
+        <p class="price">Rp3.000 / halaman</p>
+        <div style="margin-bottom: 1em;">
+          <label for="metode" style="font-weight: bold;">Pilih Metode Pembayaran:</label><br>
+          <select id="metode" style="padding: 0.5em; margin-top: 0.3em; border-radius: 5px; width: 100%;">
+            <option value="Cash">Cash</option>
+            <option value="Pulsa">Pulsa</option>
+          </select>
+        </div>
+        <button class="buy-button" onclick="pesan('makalah')">Pesan</button>
+      </div>
+      <div class="product">
+        <img src="surat.jpg" alt="Surat">
+        <h3>Surat/Dokumen</h3>
+        <p>Surat lamaran, dokumen resmi, dan lainnya.</p>
+        <p class="price">Rp3.000 / halaman</p>
+        <div style="margin-bottom: 1em;">
+          <label for="metode" style="font-weight: bold;">Pilih Metode Pembayaran:</label><br>
+          <select id="metode" style="padding: 0.5em; margin-top: 0.3em; border-radius: 5px; width: 100%;">
+            <option value="Cash">Cash</option>
+            <option value="Pulsa">Pulsa</optio>
+          </select>
+        </div>
+        <button class="buy-button" onclick="pesan('surat')">Pesan</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="slide" id="slide3">
+  <div style="background: rgba(0, 0, 0, 0.7); padding: 3em; border-radius: 10px;">
+    <h1 style="color: #27ae60;">Terima Kasih!</h1>
+    <p style="color: white; font-size: 1.3em; margin-top: 1em;">Terima kasih telah memesan jasa kami di TomzStore.</p>
+    <p style="color: white; font-size: 1.2em;">Kami akan segera memproses pesanan Anda 😊</p>
+  </div>
+</div>
+
+<script>
+  let currentSlide = 1;
+
+  function goToSlide(n) {
+    document.querySelectorAll('.slide').forEach(slide => slide.classList.remove('active'));
+    document.getElementById('slide' + n).classList.add('active');
+    currentSlide = n;
+
+    if (n === 2) {
+      history.pushState({slide: 2}, '', '#produk');
+    } else {
+      history.pushState({slide: 1}, '', '#home');
+    }
+  }
+
+  window.addEventListener('popstate', function (e) {
+    if (e.state && e.state.slide === 2) {
+      goToSlide(2);
+    } else {
+      goToSlide(1);
+    }
+  });
+
+  history.replaceState({slide: 1}, '', '#home');
+
+  function pesan(jenisProduk) {
+    const nama = document.getElementById("nama").value || "Tanpa Nama";
+    const metode = document.getElementById("metode").value;
+    const nomor = "62895343287264";
+    const text = `Halo, saya ingin memesan ${jenisProduk}.
+Nama: ${nama}
+Metode Pembayaran: ${metode}`;
+    const url = `https://wa.me/${nomor}?text=${encodeURIComponent(text)}`;
+    window.location.href = url;
+    setTimeout(() => goToSlide(3), 2000);
+  }
+</script>
+
+</body>
+</html>
